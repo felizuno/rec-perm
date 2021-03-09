@@ -26,7 +26,7 @@ After cloning the project locally:
 ### Key Dependencies
 > The complete list of project dependencies are expressed in package.json
 
-* [Playwrite - browser automation tool](https://playwright.dev/docs/api/class-playwright)
+* [Playwright - browser automation tool](https://playwright.dev/docs/api/class-playwright)
 
 ### Contributing
 
