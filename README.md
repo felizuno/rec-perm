@@ -20,13 +20,13 @@ After cloning the project locally:
 > Note: if you are running the scraper continuously you can set the interval it runs at using `SCRAPER_PROCESS_INTERVAL_MINUTES` in config.js
 ### Requirements
 
-Node.js >= 10
-NPM or Yarn
+* Node.js >= 10
+* NPM or Yarn
 
 ### Key Dependencies
 > The complete list of project dependencies are expressed in package.json
 
-* Playwrite - browser automation tool
+* [Playwrite - browser automation tool](https://playwright.dev/docs/api/class-playwright)
 
 ### Contributing
 
