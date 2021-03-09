@@ -1,0 +1,22 @@
+{
+  "name": "rec-perm",
+  "version": "1.0.0",
+  "description": "Automated permit availability detection",
+  "main": "main.js",
+  "scripts": {
+    "scrape": "node main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felizuno/rec-perm.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/felizuno/rec-perm/issues"
+  },
+  "homepage": "https://github.com/felizuno/rec-perm#readme",
+  "dependencies": {
+    "playwright": "^1.9.1"
+  }
+}
