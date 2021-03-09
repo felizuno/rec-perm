@@ -1,5 +1,7 @@
 const dismissFeedbackSolicitation = require('./dismissFeedbackSolicitation');
 
+const MONTH_DISPLAY_NAMES = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
 module.exports = async (page, CONFIG) => {
   const pageTitle = await page.$eval('h1', $h1 => $h1.innerText);
   
@@ -46,7 +48,7 @@ module.exports = async (page, CONFIG) => {
     );
 
     if (availableDays.length) {
-      const monthName = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][await getCalendarMonthIndex()];
+      const monthName = MONTH_DISPLAY_NAMES[await getCalendarMonthIndex()];
       console.log(`${pageTitle}: ${monthName} - ${JSON.stringify(availableDays)}`)
       // await page.screenshot({ path: `./img/${pageTitle}_${monthName}.png` });
     }
