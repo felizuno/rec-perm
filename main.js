@@ -12,17 +12,23 @@ const handleIndividualSearchResult = require('./subtasks/handleIndividualSearchR
     // Launch the headless browser
     const browser = await webkit.launch();
     
-    // Make our initial search
-      // Navigate the new page to the location we want to start
+    // Navigate the new page to the location we want to start
     const searchPage = await browser.newPage();
     await searchPage.goto(CONFIG.ROOT_URL + CONFIG.SEARCH_PATH);
+
+    // Make our initial search
     const searchResults = await getInitialSearchResults(searchPage, CONFIG)
 
+    // Promise.all() allows us to wait for multiple simultaneous processes to finish before proceeding
     await Promise.all(searchResults.map(async (result) => {
+      // Skip the powerboat options?
       if (/Powerboat/.test(result.title)) return;
       
+      // Navigate to individual results pages
       const resultPage = await browser.newPage();
       await resultPage.goto(CONFIG.ROOT_URL + result.href);
+
+      // Manipulate the calendar and capture availability
       await handleIndividualSearchResult(resultPage, CONFIG)
     }));
     
