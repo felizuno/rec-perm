@@ -34,6 +34,7 @@ module.exports = async (page, CONFIG) => {
     }
 
     // Move forward to the next month and repeat the loop
+    // NOTE: the last iteration will move the calendar one month past the desired end month, but it is not scraped
     await stepCalendarForwardAndWait(page, CONFIG);
   };
 };
