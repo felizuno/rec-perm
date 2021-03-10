@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/felizuno/rec-perm#readme",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "playwright": "^1.9.1"
   }
 }

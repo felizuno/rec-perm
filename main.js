@@ -1,7 +1,7 @@
 // Import Node modules or their constituent parts (see package.json)
+require('dotenv').config()
 const { firefox } = require('playwright');
 const fs = require('fs');
-
 // Import local code using relative paths (paths based on the location of this file)
 const CONFIG = require('./config');
 const getInitialSearchResults = require('./subtasks/getInitialSearchResults');
@@ -10,6 +10,7 @@ const handleIndividualSearchResult = require('./subtasks/handleIndividualSearchR
 (async () => {
   // Run our script in a try/catch to make sure that it will exit (that is, not hang indefinitely) in all error conditions
   const start = Date.now();
+  console.log(process.env.FOO)
 
   try {    
     // Launch the headless browser
@@ -66,6 +67,7 @@ const handleIndividualSearchResult = require('./subtasks/handleIndividualSearchR
         });
       }
     });
+
     console.log('NEW STUFF', newShitYay)
     // await page.screenshot({ path: `example.png` });
     await browser.close();
