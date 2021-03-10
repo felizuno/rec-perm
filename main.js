@@ -10,8 +10,7 @@ const handleIndividualSearchResult = require('./subtasks/handleIndividualSearchR
 (async () => {
   // Run our script in a try/catch to make sure that it will exit (that is, not hang indefinitely) in all error conditions
   const start = Date.now();
-  console.log(process.env.FOO)
-
+  
   try {    
     // Launch the headless browser
     const browser = await firefox.launch();
@@ -69,6 +68,32 @@ const handleIndividualSearchResult = require('./subtasks/handleIndividualSearchR
     });
 
     console.log('NEW STUFF', newShitYay)
+    if (Object.keys(newShitYay).length) {
+      var nodemailer = require('nodemailer');
+
+      var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'recpermmailer@gmail.com',
+          pass: process.env.GMAIL_PW
+        }
+      });
+      
+      var mailOptions = {
+        from: 'recpermmailer@gmail.com',
+        to: process.env.NOTIFICATION_RECIPIENT,
+        subject: 'HEY BRO PERMITS!!!!!',
+        text: JSON.stringify(newShitYay)
+      };
+      
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
+    }
     // await page.screenshot({ path: `example.png` });
     await browser.close();
     
