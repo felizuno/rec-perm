@@ -5,7 +5,7 @@ const checkForAvailableDays = require('./checkForAvailableDays');
 
 const MONTH_DISPLAY_NAMES = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-module.exports = async (page, CONFIG) => {
+module.exports = async (page, CONFIG, notAGoodDesign) => {
   // h1 is a specific element used to convey the primary title of a page
   const pageTitle = await page.$eval('h1', $h1 => $h1.innerText);
   
@@ -20,6 +20,7 @@ module.exports = async (page, CONFIG) => {
     await stepCalendarForwardAndWait(page, CONFIG);
   };
 
+  const output= {};
   // Run this code once per month until we're on the last month
   while (await getCurrentCalendarMonthAsIndex(page, CONFIG) <= CONFIG.DESIRED_ENDING_MONTH_INDEX) {
     // Scan the currently shown calendar month for availability
@@ -30,7 +31,9 @@ module.exports = async (page, CONFIG) => {
       // Resolve the month index to a human readable string
       const monthName = MONTH_DISPLAY_NAMES[await getCurrentCalendarMonthAsIndex(page, CONFIG)];
 
-      console.log(`${pageTitle}: ${monthName} - ${JSON.stringify(availableDays)}`)
+      // console.log(`${pageTitle}: ${monthName} - ${JSON.stringify(availableDays)}`)
+      output[monthName] = availableDays;
+      notAGoodDesign(output);
     }
 
     // Move forward to the next month and repeat the loop
