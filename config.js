@@ -26,7 +26,7 @@ module.exports = {
   // The name of the file that the output of a single run is written to
   OUTPUT_FILE_NAME: 'output.json',
   // Run Continuously?
-  RUN_CONTINUOUSLY: false,
+  RUN_CONTINUOUSLY: true,
   // How long to wait between scrapes if running continuously
   TIME_BETWEEN_RUNS_MINUTES: 1,
 };
