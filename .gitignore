@@ -104,4 +104,4 @@ dist
 .tern-port
 
 # Our own output
-# output.json
+output.json
