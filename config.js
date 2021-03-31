@@ -20,9 +20,13 @@ module.exports = {
   // A zero-based index for the month we want to start looking at (5 === June)
   DESIRED_STARTING_MONTH_INDEX: 5,
   // A zero-based index for the month we want to stop looking at (8 === September)
-  DESIRED_ENDING_MONTH_INDEX: 6,
+  DESIRED_ENDING_MONTH_INDEX: 8,
   // A CSS selector used to identify available days on the calendar
   AVAILABLE_CALENDAR_DAY_SELECTOR: '.CalendarMonth[data-visible="true"] .rec-available-day',
   // The name of the file that the output of a single run is written to
   OUTPUT_FILE_NAME: 'output.json',
+  // Run Continuously?
+  RUN_CONTINUOUSLY: false,
+  // How long to wait between scrapes if running continuously
+  TIME_BETWEEN_RUNS_MINUTES: 1,
 };

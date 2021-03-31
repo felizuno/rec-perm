@@ -18,12 +18,10 @@ module.exports = async (page, CONFIG) => {
     const searchResults = await page.$$eval(
       CONFIG.PERMIT_SEARCH_RESULT_LINK_SELECTOR, // this will match 0, 1, or many results
       $results => $results.map($r => ({ // Iterate over each result to derive data from the matched element
-        title: $r.getAttribute('alt'), // capture the alt text (the result title)
+        title: $r.getAttribute('alt').replace(' (4 Rivers)', ''), // capture the alt text (the result title)
         href: $r.getAttribute('href'), // capture the href (link address if you clicked)
       })),
     );
-
-    console.log('How many search results?', searchResults.length)
 
     return searchResults;
 };
