@@ -26,7 +26,7 @@ const wait = require('./subtasks/wait');
     handleProcessTermination(browser);
 
     // ==================
-    // OK! Now were ready to start scraping
+    // OK! Now we're ready to start scraping
     // ==================
 
     // Navigate the new page to the location we want to start
