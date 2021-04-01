@@ -37,7 +37,7 @@ const wait = require('./subtasks/wait');
     const searchResults = await getInitialSearchResults(searchPage, CONFIG)
 
     // We're expecting to get > 0 search results, if we don't then throw an error and exit
-    if (!searchResults || !searchResults.length) throw(new Error('NO SEARCH RESULTS! Re-running the script might fix this.'))
+    if (!searchResults || !searchResults.length) throw new Error('NO SEARCH RESULTS! Re-running the script might fix this.');
 
     // ==================
     // Now that we have the initial search results we can scrape them one or many times
