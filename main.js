@@ -91,7 +91,7 @@ const wait = require('./subtasks/wait');
       // if you're ever unsure if this is still running then you can look at the timestamp in the output.json to be sure it is incrementing
       while (CONFIG.RUN_CONTINUOUSLY) {
         await singleScraperRun();
-        await wait(CONFIG);
+        await wait(CONFIG.TIME_BETWEEN_RUNS_MINUTES);
       }
     } else {
       // Just run a single scrape
