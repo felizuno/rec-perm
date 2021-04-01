@@ -8,7 +8,7 @@ const MONTH_DISPLAY_NAMES = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "A
 module.exports = async (page, CONFIG, notAGoodDesign) => {
   // Sometimes there is a feedback popup that takes over the page.
   // This will dismiss it if it appears.
-  await dismissFeedbackSolicitation(page, CONFIG)
+  await dismissFeedbackSolicitation(page, CONFIG);
 
   // Step the calendar forward to June
   while (await getCurrentCalendarMonthAsIndex(page, CONFIG) < CONFIG.DESIRED_STARTING_MONTH_INDEX) {
