@@ -12,7 +12,7 @@ const sendEmailNotification = require('./subtasks/sendEmailNotification');
 const wait = require('./subtasks/wait');
 
 (async () => {
-  console.log('YOUR SCRAPER IS NOW RUNNING...')
+  console.log('YOUR SCRAPER IS NOW RUNNING...');
   // Run our script in a try/catch to make sure that it will exit (that is, not hang indefinitely) in all error conditions  
   try {
     // ==================
@@ -34,7 +34,7 @@ const wait = require('./subtasks/wait');
     await searchPage.goto(CONFIG.ROOT_URL + CONFIG.SEARCH_PATH);
 
     // Make our initial search
-    const searchResults = await getInitialSearchResults(searchPage, CONFIG)
+    const searchResults = await getInitialSearchResults(searchPage, CONFIG);
 
     // We're expecting to get > 0 search results, if we don't then throw an error and exit
     if (!searchResults || !searchResults.length) throw new Error('NO SEARCH RESULTS! Re-running the script might fix this.');
@@ -65,8 +65,7 @@ const wait = require('./subtasks/wait');
         // Close the page now that we're done with it, we will open fresh ones on subsequent runs
         await resultPage.close();
       }));
-  
-      
+
       const newAvailability = await findNewValuesSincePreviousRun(currentRunOutput, CONFIG);
       
       // If there is anything new then try to email us
@@ -92,7 +91,7 @@ const wait = require('./subtasks/wait');
       // if you're ever unsure if this is still running then you can look at the timestamp in the output.json to be sure it is incrementing
       while (CONFIG.RUN_CONTINUOUSLY) {
         await singleScraperRun();
-        await wait(CONFIG)
+        await wait(CONFIG);
       }
     } else {
       // Just run a single scrape
